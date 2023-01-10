@@ -62,7 +62,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{route('admin.projects.index')}}">
                                     <span data-feather="file" class="align-text-bottom"></span>
                                     <i class="fas fa-pencil    "></i>
                                     Projects

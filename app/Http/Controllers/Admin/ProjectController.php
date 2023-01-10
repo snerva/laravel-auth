@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -41,8 +42,11 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
         //dd($val_data);
-        $project = Project::create($val_data);
-        return to_route('admin.projects.index')->with('message', "$project->title added successfully!");
+        $project_slug = Project::generateSlug($val_data['title']);
+        $val_data['slug'] = $project_slug;
+
+        Project::create($val_data);
+        return to_route('admin.projects.index')->with('message', "Project added successfully!");
     }
 
     /**

@@ -28,7 +28,7 @@
                 <td>{{$project->description}}</td>
 
                 <td class="d-flex flex-column gap-2">
-                    <a href="" class="btn btn-primary view">
+                    <a href="{{route('admin.projects.show', $project->slug)}}" class="btn btn-primary view" role="button">
                         <i class="fas fa-eye"></i>
                     </a>
                     <a href="" class="btn btn-secondary edit">
