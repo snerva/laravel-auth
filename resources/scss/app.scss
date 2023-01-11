@@ -2,6 +2,8 @@
 
 body {
     font-size: .875rem;
+    background-color: #0d1117;
+    color: #f0f6fc;
 }
 
 .feather {
@@ -35,25 +37,15 @@ body {
     }
 }
 
-.sidebar-sticky {
-    height: calc(100vh - 48px);
-    overflow-x: hidden;
-    overflow-y: auto;
-    /* Scrollable contents if viewport is shorter than content. */
-}
 
 .sidebar .nav-link {
     font-weight: 500;
-    color: #333;
+    color: #f0f6fc;
 }
 
-.sidebar .nav-link .feather {
-    margin-right: 4px;
-    color: #727272;
-}
 
 .sidebar .nav-link.active {
-    color: #2470dc;
+    color: #fa10a8;
 }
 
 .sidebar .nav-link:hover .feather,

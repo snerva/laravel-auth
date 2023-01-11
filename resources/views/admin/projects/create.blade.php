@@ -1,11 +1,12 @@
+@extends('layouts.admin')
+
 @section('content')
 <div class="container py-4">
-    <h2>Projects</h2>
 
     <div class="container py-2">
         <h3>Add a new Project</h3>
         @include('partials.errors')
-        <form action="{{route('projects.store')}}" method="post">
+        <form action="{{route('admin.projects.store')}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -23,7 +24,7 @@
             @error('description')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <button type="submit" class="btn btn-primary my-3">Add Project</button>
+            <button type="submit" class="btn btn-outline-primary my-3"><i class="fas fa-plus    "></i></button>
         </form>
     </div>
 
