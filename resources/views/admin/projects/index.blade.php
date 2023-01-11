@@ -31,14 +31,14 @@
                     <a href="{{route('admin.projects.show', $project->slug)}}" class="btn btn-outline-primary view" role="button">
                         <i class="fas fa-eye"></i>
                     </a>
-                    <a href="" class="btn btn-outline-secondary edit">
+                    <a href="{{route('admin.projects.edit', $project->slug)}}" class="btn btn-outline-secondary edit">
                         <i class="fas fa-pencil fa-sm fa-fw"></i>
                     </a>
                     <a href="" class="btn btn-outline-danger delete" data-bs-toggle="modal" data-bs-target="#deleteProduct-{{$project->id}}">
                         <i class="fas fa-trash fa-sm fa-fw"></i>
                     </a>
 
-
+                    @include('partials.modal')
 
                 </td>
             </tr>

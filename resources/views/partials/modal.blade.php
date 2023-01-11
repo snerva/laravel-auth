@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId-{{$project->id}}">Delete Project</h5>
+                <h5 class="modal-title" id="modalTitleId-{{$project->id}}">Delete {{$project->title}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{{route('projects.destroy', $project->id)}}" method="post">
+                <form action="{{route('admin.projects.destroy', $project->slug)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">
