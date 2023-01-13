@@ -6,12 +6,21 @@
     <div class="container py-2">
         <h3>Add a new Project</h3>
         @include('partials.errors')
-        <form action="{{route('admin.projects.store')}}" method="post">
+        <form action="{{route('admin.projects.store')}}" method="post" enctype="multipart/form-data">
             @csrf
+
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="title here" aria-describedby="titleHelpId" value="{{old('title')}}">
                 <small id="titleHelpId" class="text-muted">Add project title here, max 100 characters.</small>
+            </div>
+            @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
+                <label for="cover_image" class="form-label">Image</label>
+                <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror" placeholder="cover image here" aria-describedby="imageHelpId">
+                <small id="imageHelpId" class="text-muted">Add project image here</small>
             </div>
             @error('title')
             <div class="alert alert-danger">{{ $message }}</div>

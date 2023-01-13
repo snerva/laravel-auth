@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -42,6 +43,12 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
         //dd($val_data);
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            //dd($cover_image);
+            $val_data['cover_image'] = $cover_image;
+        }
+
         $project_slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $project_slug;
 
@@ -82,6 +89,16 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
         //dd($val_data);
+        if ($request->hasFile('cover_image')) {
+            if ($project->cover_image) {
+                storage::delete($project->cover_image);
+            }
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            //dd($cover_image);
+            $val_data['cover_image'] = $cover_image;
+        }
+
+
         $project_slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $project_slug;
 

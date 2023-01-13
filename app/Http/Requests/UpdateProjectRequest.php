@@ -25,6 +25,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
+            'cover_image' => ['nullable', 'image', 'max:250'],
             'title' => ['required', Rule::unique('projects')->ignore($this->comic->id), 'min:4', 'max:50'],
             'description' => ['required', 'min:20'],
         ];

@@ -17,6 +17,17 @@
             @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            <div class="mb-3 d-flex gap-4">
+                <img src="{{asset('storage' . $project->cover_image)}}" width="140" alt="">
+                <div>
+                    <label for="cover_image" class="form-label">Image</label>
+                    <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror" placeholder="cover image here" aria-describedby="imageHelpId">
+                    <small id="imageHelpId" class="text-muted">Replace project image here</small>
+                </div>
+            </div>
+            @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <input type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" placeholder="description here" aria-describedby="descriptionHelpId" value="{{old('description', $project->description)}}">
