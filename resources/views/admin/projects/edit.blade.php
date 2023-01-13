@@ -6,7 +6,7 @@
     <div class="container py-2">
         <h3>Update: {{$project->title}}</h3>
         @include('partials.errors')
-        <form action="{{route('admin.projects.update', $project->slug)}}" method="post">
+        <form action="{{route('admin.projects.update', $project->slug)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -18,7 +18,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3 d-flex gap-4">
-                <img src="{{asset('storage' . $project->cover_image)}}" width="140" alt="">
+                <img src="{{asset('storage/' . $project->cover_image)}}" width="140" alt="">
                 <div>
                     <label for="cover_image" class="form-label">Image</label>
                     <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror" placeholder="cover image here" aria-describedby="imageHelpId">

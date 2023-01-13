@@ -13,6 +13,7 @@
         <thead class="table-dark">
             <tr>
                 <th>Id</th>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Slug</th>
                 <th>Description</th>
@@ -23,6 +24,13 @@
             @forelse($projects as $project)
             <tr class="table-light">
                 <td scope="row">{{$project->id}}</td>
+                <td>
+                    @if($project->cover_image)
+                    <img width="140" class="img-fluid" src="{{asset('storage/' . $project->cover_image)}}" alt="">
+                    @else
+                    <div class="placeholder p-5 bg-dark d-flex align-items-center justify-content-center" style="width:140px">No Image</div>
+                    @endif
+                </td>
                 <td>{{$project->title}}</td>
                 <td>{{$project->slug}}</td>
                 <td>{{$project->description}}</td>
